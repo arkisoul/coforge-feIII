@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    >
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
+    <title>Document</title>
+    <style></style>
+    <link
+      rel="stylesheet"
+      href="./styles/style.css"
+    >
+  </head>
+
+  <body>
+    <div id="main-content">
+      <div class="container">
+        <nav
+          class="navbar"
+          id="navigation"
+        >
+          <menu class="nav">
+            <li class="nav-item"><a href="">Home</a></li>
+            <li class="nav-item"><a href="">About</a></li>
+            <li class="nav-item">
+              <a href="">Gallery </a>
+              <ul class="gallery-menu">
+                <li><a href="">Art</a></li>
+                <li><a href="">Paints</a></li>
+              </ul>
+            </li>
+            <li>Portfolio</li>
+            <li class="nav-item"><a href="">Contact</a></li>
+          </menu>
+        </nav>
+        <section class="home">
+          <h2 class="section-heading">I am secondary heading</h2>
+          <p
+            class="section-brief"
+            style="border: 3px solid yellow;"
+          >I am a paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sapiente architecto,
+            non accusantium libero vero sint tenetur illo qui suscipit provident perferendis! Neque ipsum error quia
+            eius est quasi cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facere repellat ut eveniet,
+            non cum dolore repellendus recusandae impedit voluptatem necessitatibus eius nostrum aliquid voluptatibus
+            distinctio expedita minus, suscipit aliquam.</p>
+          <span>I am inline element Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione nihil sit illo
+            cumque, sapiente vel quos vitae magni sunt labore atque architecto sed iure. Maiores quibusdam molestias
+            debitis excepturi neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, facere,
+            facilis et, possimus voluptates ipsa in eveniet nam atque nulla sunt. Ipsam fugit, non itaque dolor
+            voluptatum quos vel architecto.</span>
+          <span>I am inline element</span>
+          <span>I am inline element</span>
+          <span>I am inline element</span>
+          <figure>
+            <img
+              src=""
+              alt="presentation only"
+            >
+            <figcaption></figcaption>
+          </figure>
+          <button onclick="handleButtonClick(event)">Click Me!!</button>
+          <button onclick="handleButtonClick(event)">Click Me!!</button>
+          <button onclick="handleButtonClick(event)">Click Me!!</button>
+          <button onclick="handleButtonClick(event)">Click Me!!</button>
+          <button data-btn="clickBtn">Click Me!!</button>
+          <button data-btn="clickBtn">Click Me!!</button>
+          <button data-btn="clickBtn">Click Me!!</button>
+          <button data-btn="clickBtn">Click Me!!</button>
+        </section>
+        <section>
+          <h3>Title</h3>
+          <form
+            action=""
+            method="get"
+            enctype=""
+          >
+            <input
+              type="hidden"
+              value="PUT"
+              name="method"
+            >
+            <!-- <input type="file" name="picture"> -->
+            <div class="form-group">
+              <label for="username">Enter username</label>
+            </div>
+            <input
+              type="email"
+              name="username"
+            >
+            <input
+              type="password"
+              name="password"
+            >
+            <fieldset>
+              <input
+                type="text"
+                id="username"
+              >
+              <legend>Basic information</legend>
+              <input type="checkbox">
+              <input type="radio">
+              <input type="date">
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+              ></textarea>
+            </fieldset>
+            <fieldset>
+              <legend>Contact information</legend>
+              <input type="color">
+              <select
+                name=""
+                id=""
+                multiple
+              >
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
+              </select>
+            </fieldset>
+            <input
+              type="submit"
+              value="Submit"
+            >
+            <!-- <button type="submit">Submit</button> -->
+          </form>
+        </section>
+        <video>
+          <source
+            src=""
+            type="video/ogg"
+          >
+          <source
+            src=""
+            type="video/ogg"
+          >
+          <source
+            src=""
+            type="video/ogg"
+          >
+        </video>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function handleButtonClick(event) {
+        event.target.innerText = event.target.innerText + " " + 1;
+        alert('Hey, a click received.')
+      }
+      const clickBtns = document.querySelectorAll('[data-btn="clickBtn"]');
+      clickBtns.forEach(function (clickBtn) {
+        clickBtn.addEventListener('click', handleButtonClick);
+      })
+      localStorage.setItem('hey', Date.now())
+      sessionStorage.setItem('hey', Date.now());
+    // $('[data-btn="clickBtn"]').on('click', handleButtonClick);
+    </script>
+  </body>
+
+</html>
