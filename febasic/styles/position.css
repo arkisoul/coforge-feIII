@@ -1,0 +1,26 @@
+body {
+  min-height: 200vh;
+}
+.box {
+  padding: 20px;
+  background-color: lightcyan;
+  min-height: 50vh;
+  border-bottom: 4px solid black;
+  /* position: relative; */
+}
+.inner-box {
+  padding: 20px;
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+  height: 100px;
+}
+.inner-box:first-child {
+  position: relative;
+  top: 10px;
+  right: 20px;
+}
+.inner-box:nth-child(2) {
+  position: sticky;
+  top: 0px;
+}
