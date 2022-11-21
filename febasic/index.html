@@ -27,21 +27,21 @@
           id="navigation"
         >
           <menu class="nav">
-            <li class="nav-item"><a href="">Home</a></li>
-            <li class="nav-item"><a href="">About</a></li>
-            <li class="nav-item">
-              <a href="">Gallery </a>
+            <li class="nav-item" tabindex="0"><a href="/">Home</a></li>
+            <li class="nav-item" tabindex="0"><a href="about.html">About</a></li>
+            <li class="nav-item" tabindex="0">
+              <a href="gallery.html">Gallery </a>
               <ul class="gallery-menu">
-                <li><a href="">Art</a></li>
-                <li><a href="">Paints</a></li>
+                <li><a href="art.html">Art</a></li>
+                <li><a href="paints.html">Paints</a></li>
               </ul>
             </li>
-            <li>Portfolio</li>
-            <li class="nav-item"><a href="">Contact</a></li>
+            <li tabindex="0">Portfolio</li>
+            <li class="nav-item" tabindex="0"><a href="contact.html">Contact</a></li>
           </menu>
         </nav>
         <section class="home">
-          <h2 class="section-heading">I am secondary heading</h2>
+          <h2 class="section-heading" title="secondary heading">I am secondary heading</h2>
           <p
             class="section-brief"
             style="border: 3px solid yellow;"
@@ -56,19 +56,20 @@
             facilis et, possimus voluptates ipsa in eveniet nam atque nulla sunt. Ipsam fugit, non itaque dolor
             voluptatum quos vel architecto.</span>
           <span>I am inline element</span>
-          <span>I am inline element</span>
-          <span>I am inline element</span>
           <figure>
             <img
               src=""
               alt="presentation only"
-            >
+              >
             <figcaption></figcaption>
           </figure>
+          <a href="https://google.com" class="external">Google</a>
+          <span>I am inline element</span>
           <button onclick="handleButtonClick(event)">Click Me!!</button>
           <button onclick="handleButtonClick(event)">Click Me!!</button>
           <button onclick="handleButtonClick(event)">Click Me!!</button>
           <button onclick="handleButtonClick(event)">Click Me!!</button>
+          <span>I am inline element</span>
           <button data-btn="clickBtn">Click Me!!</button>
           <button data-btn="clickBtn">Click Me!!</button>
           <button data-btn="clickBtn">Click Me!!</button>
@@ -150,6 +151,59 @@
           >
         </video>
       </div>
+    </div>
+    <div>
+      <p title="foo bar">1</p>
+      <p title="bar foo">2</p>
+      <p title="foo baz">3</p>
+      <p title="foo">4</p>
+      <p title="foo bar baz">5</p>
+      <p title="foo-bar-baz">6</p>
+    </div>
+    <div>
+      <table class="table-striped"> 
+        <tbody>
+          <tr>
+            <td>Sr</td>
+            <td>Name</td>
+            <td>Dept</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>HR</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Marketing</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Jonas</td>
+            <td>Sales</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>HR</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Marketing</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Jonas</td>
+            <td>Sales</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box">
+      <div class="inner-box inner-box-1">Box 1</div>
+      <div class="inner-box inner-box-2">Box 2</div>
     </div>
     <script type="text/javascript">
       function handleButtonClick(event) {
