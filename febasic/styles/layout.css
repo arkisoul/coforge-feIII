@@ -37,3 +37,67 @@ body {
   order: 2;
   align-self: flex-end;
 }
+
+/* CSS Grid */
+.grid {
+  background-color: blanchedalmond;
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 100px);
+  grid-template-areas: 
+    "h h h h . s"
+    "m m m i i s"
+    "f f f j j s";
+  gap: 10px 20px;
+  /* justify-items: center;
+  align-items: center; */
+  place-items: stretch;
+  justify-content: center;
+}
+.grid-item {
+  padding: 25px;
+  border: 1px solid #212121;
+}
+.grid-item:first-child {
+  grid-area: h;
+}
+.grid-item:nth-child(3) {
+  grid-area: s;
+}
+.grid-item:nth-child(9) {
+  grid-area: m;
+}
+.grid-item:last-child {
+  grid-area: f;
+}
+.grid-item:nth-child(7) {
+  grid-area: i;
+}
+.grid-item:nth-child(5) {
+  grid-area: j;
+}
+.grid-item:nth-child(2) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* min-width, max-width, min-height, max-height, width, height
+ orientation, pixel-ratio,  */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .grid {
+    background-color: tomato;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grid {
+    padding: 50px;
+  }
+}
+/* @media (orientation: landscape) */
