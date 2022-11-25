@@ -92,3 +92,33 @@ console.log(nums0);
 // console.log(nums1);
 console.log(nums2);
 console.log(numsRest);
+const personName = obj.name;
+const personAge = obj.age_old;
+const personAddress = obj.address;
+// const person = { personName, personAge, personAddress };
+const { name, age_old, hobbies, ...restPerson } = obj;
+console.log(personName, personAge, personAddress);
+// console.log(person);
+console.log(name, age_old, hobbies, restPerson);
+obj.age = obj.age_old;
+delete obj.age_old;
+console.log(obj)
+
+const multilineString = `
+I am multiline string.
+I am spanning over multiple lines.
+This is awesome.
+`
+
+// camelCase
+// PascalCase
+// snake_case
+
+console.log(multilineString);
+
+function greet(name) {
+  name = name && "Jane" && "Jonas" && "Arpit";
+  return `Hola! ${name}`;
+}
+console.log(greet('John'));
+console.log(greet());
