@@ -1,0 +1,12 @@
+.blog {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.blog > h3 {
+  margin: 0;
+  text-transform: capitalize;
+}
+.blog > p {
+  margin: 0;
+}
