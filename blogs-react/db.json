@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "title": "Technology is awesome",
+      "desc": "lorem ipsum is dummy text",
+      "id": 1
+    },
+    {
+      "title": "A new blog is out",
+      "desc": "lorem ipsum",
+      "id": 2
+    },
+    {
+      "title": "a blog",
+      "desc": "a blog desc",
+      "id": 7
+    },
+    {
+      "title": "React is Awesome",
+      "desc": "React is awesome",
+      "id": 8
+    },
+    {
+      "title": "Angular is fun",
+      "desc": "angular is a monolith framework and its fun.",
+      "id": 9
+    }
+  ],
+  "users": []
+}

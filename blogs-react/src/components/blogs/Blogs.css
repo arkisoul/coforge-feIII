@@ -25,3 +25,6 @@
   font-size: 2rem;
   margin: 0 0 1em;
 }
+.add-blog {
+  grid-column: 1 / -1;
+}

@@ -1,24 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Blog.css";
 
-// react hooks introduced in 16.8
+// useState, useEffect, useCallback, useRef, useMemo, useLayoutEffect, useReducer, useContext
 
 export const BlogComponent = ({ blog }) => {
+  const [count, setCount] = useState(localStorage.getItem('count') || 0); // => [stateValue, stateMutatingFunction]
+  const [time, setTime] = useState(new Date());
+  const inputElement = React.useRef(null);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []); // dependency array/dep array
+
   return (
-    <div className="blog">
+    <div className="blog" ref={inputElement}>
       <h3>{blog.title}</h3>
-      <p>{blog.body}</p>
+      <p>{blog.desc}</p>
+      <div className="counter">
+        <button onClick={() => {
+          localStorage.setItem('count', count+1);
+          setCount(count + 1)
+        }}>Inc</button>
+        <span>{count}</span>
+        <button onClick={() => setCount(count - 1)}>Dec</button>
+      </div>
+      <div className="time">
+        {time.toLocaleString()}
+      </div>
     </div>
   );
 }
-
-export const BlogDetailComponent = () => {
-  return (
-    <div>
-      <h3>I am blog detail component</h3>
-    </div>
-  )
-}
-
-export default BlogDetailComponent;
-export const PI = Math.PI;
