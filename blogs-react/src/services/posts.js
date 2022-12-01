@@ -26,3 +26,12 @@ export const createPost = async ({ title, desc }, cb) => {
     throw error;
   }
 }
+
+export const fetchPostById = async (id) => {
+  try {
+    const res = await axios.get(`/posts/${id}`);
+    return res;
+  } catch (error) {
+    throw error; 
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "./Blog.css";
 
 // useState, useEffect, useCallback, useRef, useMemo, useLayoutEffect, useReducer, useContext
@@ -20,7 +21,7 @@ export const BlogComponent = ({ blog }) => {
 
   return (
     <div className="blog" ref={inputElement}>
-      <h3>{blog.title}</h3>
+      <h3><Link to={`/blogs/${blog.id}`}>{blog.title}</Link></h3>
       <p>{blog.desc}</p>
       <div className="counter">
         <button onClick={() => {
