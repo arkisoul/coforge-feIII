@@ -1,9 +1,11 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 
 import { blogsReducer } from "../app/blogs/blogs.reducer";
+import { counterReducer } from "../app/counter/counter.reducer";
 
 const rootReducer = combineReducers({
-  blogs: blogsReducer
+  blogs: blogsReducer,
+  counter: counterReducer
 })
 
 const middlewares = [];
