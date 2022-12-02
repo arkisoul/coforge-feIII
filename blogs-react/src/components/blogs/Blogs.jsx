@@ -1,17 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { fetchAllPosts, createPost } from "../../services/posts";
+import {
+  fetchAllBlogsStart,
+  fetchAllBlogsFailed,
+  fetchAllBlogs,
+} from "../../app/blogs/blogs.action.types";
 import { BlogComponent } from "../blog/Blog";
 import "./Blogs.css";
 
-export class Blogs extends Component {
+class BlogsComponent extends Component {
   constructor(props) {
     console.log(props);
     super(props);
     this.state = {
-      blogs: [],
       time: new Date(),
-      title: '',
-      desc: '',
+      title: "",
+      desc: "",
     };
     this.intervalId = null;
     this.titleRef = React.createRef(null);
@@ -34,12 +39,15 @@ export class Blogs extends Component {
 
   getAllBlogs = async () => {
     try {
+      this.props.fetchAllBlogStart();
       const res = await fetchAllPosts();
-      this.setState({ blogs: res.data })
+      this.props.fetchAllBlogSuccess(res.data);
+      // this.setState({ blogs: res.data });
     } catch (error) {
-      console.error(error)
+      console.error(error);
+      this.props.fetchAllBlogsFailed(error);
     }
-  }
+  };
 
   // changeTitle = async (value) => {
   //   await this.setState({ title: value });
@@ -57,7 +65,10 @@ export class Blogs extends Component {
     // const desc = document.getElementById('desc').value;
     // const desc = this.descRef.current.value;
     try {
-      const res = await createPost({ title: this.state.title, desc: this.state.desc });
+      const res = await createPost({
+        title: this.state.title,
+        desc: this.state.desc,
+      });
       const updatedBlogs = [...this.state.blogs, res.data];
       this.setState({
         blogs: updatedBlogs,
@@ -67,21 +78,21 @@ export class Blogs extends Component {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   handleTitleChange = (e) => {
-    this.setState({ title: e.target.value })
-  }
-  
+    this.setState({ title: e.target.value });
+  };
+
   handleDescChange = (e) => {
-    this.setState({ desc: e.target.value })
-  }
+    this.setState({ desc: e.target.value });
+  };
 
   render() {
     return (
       <section className="blogs-container">
         <h2>Blogs | {this.state.time.toLocaleString()}</h2>
-        {this.state.blogs.map((blog) => (
+        {this.props.blogsFromStore.map((blog) => (
           <BlogComponent
             blog={blog}
             version="1.0.0"
@@ -122,3 +133,22 @@ export class Blogs extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    blogsFromStore: state.blogs.blogs,
+    isLoading: state.blogs.isFetching,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchAllBlogStart: () => dispatch(fetchAllBlogsStart()),
+    fetchAllBlogSuccess: (abc) => dispatch(fetchAllBlogs(abc)),
+    fetchAllBlogsFailed: (error) => dispatch(fetchAllBlogsFailed(error))
+  };
+};
+
+const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps);
+export const Blogs = ConnectedComponent(BlogsComponent);
+// export const Blogs = connect(mapStateToProps, mapDispatchToProps)(BlogsComponent);
