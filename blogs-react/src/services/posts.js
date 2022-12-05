@@ -9,7 +9,7 @@ export const fetchAllPosts = async () => {
   }
 }
 
-export const createPost = async ({ title, desc }, cb) => {
+export const createPost = async ({ title, desc }) => {
   try {
     // fetch(`http://localhost:4000/posts`, {
     //   method: 'POST',

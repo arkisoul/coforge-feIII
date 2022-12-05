@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchAllPosts, createPost } from "../../services/posts";
 import {
-  fetchAllBlogsStart,
-  fetchAllBlogsFailed,
   fetchAllBlogs,
+  createABlog,
 } from "../../app/blogs/blogs.action.types";
 import { BlogComponent } from "../blog/Blog";
 import "./Blogs.css";
@@ -25,7 +23,7 @@ class BlogsComponent extends Component {
   }
 
   componentDidMount() {
-    this.getAllBlogs();
+    this.props.fetchAllBlogs();
     console.log("componentDidMount");
     this.intervalId = setInterval(() => {
       this.setState({ time: new Date() });
@@ -36,18 +34,6 @@ class BlogsComponent extends Component {
     clearInterval(this.intervalId);
     console.log("componentWillUnmount");
   }
-
-  getAllBlogs = async () => {
-    try {
-      this.props.fetchAllBlogStart();
-      const res = await fetchAllPosts();
-      this.props.fetchAllBlogSuccess(res.data);
-      // this.setState({ blogs: res.data });
-    } catch (error) {
-      console.error(error);
-      this.props.fetchAllBlogsFailed(error);
-    }
-  };
 
   // changeTitle = async (value) => {
   //   await this.setState({ title: value });
@@ -64,20 +50,14 @@ class BlogsComponent extends Component {
     // const title = this.titleRef.current.value;
     // const desc = document.getElementById('desc').value;
     // const desc = this.descRef.current.value;
-    try {
-      const res = await createPost({
-        title: this.state.title,
-        desc: this.state.desc,
-      });
-      const updatedBlogs = [...this.state.blogs, res.data];
-      this.setState({
-        blogs: updatedBlogs,
-        title: "",
-        desc: "",
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    this.props.createABlog({
+      title: this.state.title,
+      desc: this.state.desc,
+    });
+    this.setState({
+      title: "",
+      desc: "",
+    });
   };
 
   handleTitleChange = (e) => {
@@ -143,9 +123,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllBlogStart: () => dispatch(fetchAllBlogsStart()),
-    fetchAllBlogSuccess: (abc) => dispatch(fetchAllBlogs(abc)),
-    fetchAllBlogsFailed: (error) => dispatch(fetchAllBlogsFailed(error))
+    fetchAllBlogs: () => dispatch(fetchAllBlogs),
+    createABlog: ({ title, desc }) => dispatch(createABlog({ title, desc }))
   };
 };
 

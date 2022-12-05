@@ -1,4 +1,5 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import { blogsReducer } from "../app/blogs/blogs.reducer";
 import { counterReducer } from "../app/counter/counter.reducer";
@@ -8,7 +9,7 @@ const rootReducer = combineReducers({
   counter: counterReducer
 })
 
-const middlewares = [];
+const middlewares = [thunk];
 
 const composeEnhancers =
   (typeof window !== 'undefined' &&
