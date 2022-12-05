@@ -24,7 +24,7 @@ export const BlogComponent = ({ blog }) => {
   }, []); // dependency array/dep array
 
   return (
-    <div className="blog" ref={inputElement}>
+    <div className="blog" ref={inputElement} data-testid="blog-item">
       <h3>
         <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
       </h3>
@@ -49,7 +49,6 @@ export const BlogComponent = ({ blog }) => {
           Dec
         </button>
       </div>
-      <div className="time">{time.toLocaleString()}</div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import "./Blogs.css";
 
 class BlogsComponent extends Component {
   constructor(props) {
-    console.log(props);
+    // console.log(props);
     super(props);
     this.state = {
       time: new Date(),
@@ -24,7 +24,7 @@ class BlogsComponent extends Component {
 
   componentDidMount() {
     this.props.fetchAllBlogs();
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
     this.intervalId = setInterval(() => {
       this.setState({ time: new Date() });
     }, 1000);
@@ -32,7 +32,7 @@ class BlogsComponent extends Component {
 
   componentWillUnmount() {
     clearInterval(this.intervalId);
-    console.log("componentWillUnmount");
+    // console.log("componentWillUnmount");
   }
 
   // changeTitle = async (value) => {
@@ -71,7 +71,7 @@ class BlogsComponent extends Component {
   render() {
     return (
       <section className="blogs-container">
-        <h2>Blogs | {this.state.time.toLocaleString()}</h2>
+        <h2>Blogs</h2>
         {this.props.blogsFromStore.map((blog) => (
           <BlogComponent
             blog={blog}
@@ -81,7 +81,7 @@ class BlogsComponent extends Component {
         ))}
         <form action="" className="add-blog">
           <div className="form-group">
-            <label htmlFor="title"></label>
+            <label htmlFor="title">Blog Title</label>
             <input
               id="title"
               type="text"
@@ -93,7 +93,7 @@ class BlogsComponent extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="desc"></label>
+            <label htmlFor="desc">Blog Description</label>
             <textarea
               name="desc"
               id="desc"
