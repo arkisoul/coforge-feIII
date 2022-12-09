@@ -1,13 +1,9 @@
 <div class="blogs">
   <h2 [title]="pageTitle">{{ pageTitle }}</h2>
-  <div class="blog" [id]="blog.id" *ngFor="let blog of blogs" [ngStyle]="blogStyle" [ngClass]="{ 'blog--published': blog.isPublished, 'blog--draft': !blog.isPublished }">
-    <h3>{{ blog.title }}</h3>
-    <p>{{ blog.body }}</p>
-    <small *ngIf="blog.isPublished; else elseBlock">Published</small>
-    <ng-template #elseBlock><small>Draft</small></ng-template>
-  </div>
+  <app-single-blog (click)="handleBlogClick()" (deleteBlog)="onDeleteBlog($event)" [blogItem]="blog" *ngFor="let blog of blogs"></app-single-blog>
 </div>
-<app-single-blog>
+<!-- shows ng-container and ng-content use -->
+<!-- <app-single-blog>
   <h1>Hello world</h1>
   <ng-container header>
     <div
@@ -23,4 +19,4 @@
       <ng-template #elseBlock><small>Draft</small></ng-template>
     </div>
   </ng-container>
-</app-single-blog>
+</app-single-blog> -->

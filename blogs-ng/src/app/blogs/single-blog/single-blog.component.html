@@ -1,4 +1,21 @@
-<p>single-blog works!</p>
+<!-- shows ng-content for content projection -->
+<!-- <p>single-blog works!</p>
 <ng-content></ng-content>
 <hr>
-<ng-content select="[header]"></ng-content>
+<ng-content select="[header]"></ng-content> -->
+<ng-container *ngIf="blogItem">
+  <div
+    class="blog"
+    [id]="blogItem.id"
+    [ngStyle]="blogStyle"
+    [ngClass]="{ 'blog--published': blogItem.isPublished, 'blog--draft': !blogItem.isPublished }"
+  >
+    <h3>{{ blogItem.title }}</h3>
+    <p>{{ blogItem.body }}</p>
+    <small *ngIf="blogItem.isPublished; else elseBlock">Published</small>
+    <ng-template #elseBlock><small>Draft</small></ng-template>
+    <div class="blog-action">
+      <button (click)="handleBlogDelete($event)">Delete</button>
+    </div>
+  </div>
+</ng-container>

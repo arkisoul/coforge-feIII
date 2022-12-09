@@ -13,6 +13,7 @@ import { SingleBlogComponent } from './single-blog/single-blog.component';
   imports: [
     CommonModule,
     BlogsRoutingModule
-  ]
+  ],
+  exports: [BlogsComponent]
 })
 export class BlogsModule { }
