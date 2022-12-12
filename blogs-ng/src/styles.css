@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font: normal 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #212121;
+  display: grid;
+  min-height: 100vh;
+}
+a, a:hover, a:focus {
+  text-decoration: none;
+}
+ul:not([role="list"]),
+ol:not([role="list"])
+menu:not([role="list"]) {
+  list-style: none;
+}

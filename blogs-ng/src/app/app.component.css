@@ -1,0 +1,41 @@
+:host {
+  height: 100%;
+}
+.app {
+  display: grid;
+  grid-template-rows: 80px 1fr 40px;
+  min-height: 100vh;
+}
+.header {
+  background-color: #f8f8f8;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+.logo {
+  font-family: cursive;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+.nav {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-link {
+  padding: 0.75em 1em;
+}
+.nav-link.active {
+  background-color: #fff;
+}
+.footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 0.5em 1em;
+}

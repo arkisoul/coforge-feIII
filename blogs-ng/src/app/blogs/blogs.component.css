@@ -1,0 +1,11 @@
+.blogs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em 0.75em;
+  padding: 2.5em 1.5em;
+}
+.title {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 1em;
+}

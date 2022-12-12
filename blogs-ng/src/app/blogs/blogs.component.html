@@ -1,5 +1,5 @@
 <div class="blogs">
-  <h2 [title]="pageTitle">{{ pageTitle }}</h2>
+  <h2 [title]="pageTitle" class="title">{{ pageTitle }}</h2>
   <app-single-blog (click)="handleBlogClick()" (deleteBlog)="onDeleteBlog($event)" [blogItem]="blog" *ngFor="let blog of blogs"></app-single-blog>
 </div>
 <!-- shows ng-container and ng-content use -->
