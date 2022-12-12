@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Blog } from '../models/blog/blog';
 
 @Component({
@@ -8,7 +9,7 @@ import { Blog } from '../models/blog/blog';
 })
 export class SingleBlogComponent {
   @Input()
-  blogItem: Blog;
+  blogItem?: Blog;
 
   @Output('deleteBlog')
   deleteBlogEventEmitter: EventEmitter<number> = new EventEmitter();
@@ -18,7 +19,7 @@ export class SingleBlogComponent {
     color: '#212121',
   };
 
-  constructor() {
+  constructor(private router: Router) {
     this.blogStyle = {
       'background-color': 'purple',
       color: 'white',
@@ -27,6 +28,10 @@ export class SingleBlogComponent {
 
   handleBlogDelete(str: any) {
     console.log('[handleBlogDelete]', this.blogItem, str);
-    this.deleteBlogEventEmitter.emit(this.blogItem.id);
+    this.deleteBlogEventEmitter.emit(this.blogItem?.id);
+  }
+
+  navigateToDetail() {
+    this.router.navigate([`/blogs`, this.blogItem?.id]);
   }
 }
