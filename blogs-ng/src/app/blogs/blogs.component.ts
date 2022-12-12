@@ -15,6 +15,10 @@ export class BlogsComponent implements OnInit {
   constructor(private blogsService: BlogsService) {}
 
   ngOnInit(): void {
+    this.fetchBlogs();
+  }
+
+  fetchBlogs() {
     this.blogs = this.blogsService.fetchBlogs();
   }
 
@@ -23,7 +27,7 @@ export class BlogsComponent implements OnInit {
   }
 
   onDeleteBlog(id: number) {
-    console.log('[onDeleteBlog]', id);
-    this.blogs = this.blogs.filter((blog) => blog.id !== id);
+    this.blogsService.deleteBlog(id);
+    this.fetchBlogs();
   }
 }
