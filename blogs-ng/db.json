@@ -1,4 +1,4 @@
 {
-  "blogs": [],
+  "blogs": [{ "id": 1, "title": "Angular is awesome", "body": "lorem ipsum is a dummy text", "isPublished": true }],
   "users": []
 }

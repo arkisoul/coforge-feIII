@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Blog } from '../models/blog/blog';
 
@@ -10,18 +11,13 @@ import { Blog } from '../models/blog/blog';
   providedIn: 'root'
 })
 export class BlogsService {
+  private readonly baseUrl: string = 'http://localhost:3000/blogs';
   private blogs: Blog[] = [];
 
-  constructor(private http: HttpClient) {
-    for (let index = 1; index <= 5; index++) {
-      this.blogs.push(
-        new Blog(index, `Blog ${index}`, `Blog body ${index}`, index % 2 === 1)
-      );
-    }
-  }
+  constructor(private http: HttpClient) {}
 
-  public fetchBlogs(): Blog[] {
-    return this.blogs;
+  public fetchBlogs(): Observable<Blog[]> {
+    return this.http.get<Blog[]>(this.baseUrl);
   }
 
   public fetchBlogById(id: number): Blog | undefined {

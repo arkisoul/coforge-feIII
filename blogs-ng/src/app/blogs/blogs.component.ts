@@ -19,7 +19,7 @@ export class BlogsComponent implements OnInit {
   }
 
   fetchBlogs() {
-    this.blogs = this.blogsService.fetchBlogs();
+    this.blogsService.fetchBlogs().subscribe((blogs: Blog[]) => this.blogs = blogs);
   }
 
   handleBlogClick() {
