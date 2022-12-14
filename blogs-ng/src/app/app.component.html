@@ -4,7 +4,7 @@
       <a routerLink="" class="logo">Witer</a>
       <menu class="nav" role="menu">
         <li class="nav-item" role="menuitem"><a routerLink="" class="nav-link">Home</a></li>
-        <li class="nav-item" role="menuitem"><a routerLink="/blogs" class="nav-link">Blogs</a></li>
+        <li class="nav-item" role="menuitem"><a routerLink="/blogs" class="nav-link">Blogs <span>{{ count }}</span> | <span>{{ blogsCount$ | async }}</span></a></li>
         <li class="nav-item" role="menuitem"><a routerLink="/auth/register" class="nav-link">Register</a></li>
       </menu>
     </nav>

@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 
 import { Blog } from '../models/blog/blog';
+import { BlogsService } from '../services/blogs.service';
 
 @Component({
   selector: 'app-blog-add',
@@ -10,23 +16,53 @@ import { Blog } from '../models/blog/blog';
 })
 export class BlogAddComponent {
   blog: Blog = new Blog(0, 'An awesome title', '');
-  searchField = new FormControl('Search keyword', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]);
+  searchField = new FormControl('Search keyword', [
+    Validators.required,
+    Validators.minLength(10),
+    Validators.maxLength(20),
+  ]);
   showKeywordSuggestion: boolean = false;
   keywords: string[] = [];
+  /* reactiveBlog = {
+    title: new FormControl(),
+    body: new FormControl(),
+  } */
+  reactiveBlog: FormGroup;
 
-  constructor() {
-    console.log(this.searchField);
-    this.searchField.valueChanges.subscribe(val => {
+  constructor(private blogsService: BlogsService, private fb: FormBuilder) {
+    this.reactiveBlog = this.fb.group({
+      title: ['', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(25),
+      ]],
+      body: ['', [
+        Validators.required,
+        Validators.minLength(50),
+      ]],
+      isPublished: [false, [Validators.required]],
+      publishedAt: ['', [Validators.required]],
+      author: ['', [Validators.required]],
+    });
+    console.log(this.reactiveBlog);
+    this.searchField.valueChanges.subscribe((val) => {
       console.log(val);
-      if(val?.trim()) {
-        this.keywords = ['python', 'python django', 'python flask']
+      if (val?.trim()) {
+        this.keywords = ['python', 'python django', 'python flask'];
       }
       console.log(this.searchField);
-    })
+    });
+    this.reactiveBlog.valueChanges.subscribe((value) => {
+      console.log('[formGroup values]', value);
+    });
   }
 
   handleAddBlogSubmit() {
-    console.log(this.blog);
+    console.log(this.blog, this.reactiveBlog.value);
+    this.blogsService.create(this.reactiveBlog.value).subscribe((res) => {
+      console.log(res);
+      this.blogsService.setBlogsCount(1);
+    });
   }
 
   handleClick() {

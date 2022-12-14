@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { BlogsService } from './blogs/services/blogs.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,14 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   observable: Observable<number>;
   subject: Subject<number>;
   behaviorSubject: BehaviorSubject<number>;
+  blogsCount$: Observable<number>;
+  count: number;
 
-  constructor() {
+  constructor(private blogsService: BlogsService) {
     this.observable = new Observable((observer) => {
       observer.next(1);
       observer.next(2);
@@ -33,5 +36,10 @@ export class AppComponent {
     this.behaviorSubject.next(1);
     const sub = this.observable.subscribe(value => console.log(value));
     this.observable.subscribe(value => console.log(value));
+  }
+
+  ngOnInit(): void {
+    this.blogsCount$ = this.blogsService.getBlogsCount();
+    this.blogsService.getBlogsCount().subscribe(val => this.count = val);
   }
 }

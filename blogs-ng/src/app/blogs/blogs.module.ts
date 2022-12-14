@@ -7,6 +7,7 @@ import { BlogsComponent } from './blogs.component';
 import { SingleBlogComponent } from './single-blog/single-blog.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogAddComponent } from './blog-add/blog-add.component';
+import { FilesizePipe } from './pipes/filesize.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { BlogAddComponent } from './blog-add/blog-add.component';
     SingleBlogComponent,
     BlogDetailComponent,
     BlogAddComponent,
+    FilesizePipe,
   ],
   imports: [CommonModule, BlogsRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

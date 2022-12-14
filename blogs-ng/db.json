@@ -1,4 +1,59 @@
 {
-  "blogs": [{ "id": 1, "title": "Angular is awesome", "body": "lorem ipsum is a dummy text", "isPublished": true }],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Angular is awesome",
+      "body": "lorem ipsum is a dummy text",
+      "isPublished": true
+    },
+    {
+      "title": "Reactjs is a lib",
+      "body": "Reactjs is lib for creating modern, flexible layouts",
+      "isPublished": false,
+      "publishedAt": "2022-12-13",
+      "author": "John Doe",
+      "id": 2
+    },
+    {
+      "title": "Angular is a framework",
+      "body": "Angular is a monolith framework for creating modern flexible layouts.",
+      "isPublished": true,
+      "publishedAt": "2022-12-14",
+      "author": "John Doe",
+      "id": 3
+    },
+    {
+      "title": "A new blog",
+      "body": "a new blog with some dummy text a new blog with some dummy text",
+      "isPublished": true,
+      "publishedAt": "2022-12-14",
+      "author": "Jane Doe",
+      "id": 4
+    },
+    {
+      "title": "Reactjs is a lib",
+      "body": "Reactjs is a lib Reactjs is a lib Reactjs is a libReactjs is a libReactjs is a libReactjs is a lib",
+      "isPublished": true,
+      "publishedAt": "2022-12-14",
+      "author": "Jane Doe",
+      "id": 5
+    },
+    {
+      "title": "Reactjs is a lib",
+      "body": "Reactjs is a lib\nReactjs is a lib\nReactjs is a lib\nReactjs is a lib\n",
+      "isPublished": true,
+      "publishedAt": "2022-12-13",
+      "author": "Guest",
+      "id": 6
+    },
+    {
+      "title": "Reactjs is a lib",
+      "body": "Reactjs is a lib\nReactjs is a lib\nReactjs is a lib",
+      "isPublished": true,
+      "publishedAt": "2022-12-14",
+      "author": "John Doe",
+      "id": 7
+    }
+  ],
   "users": []
 }
