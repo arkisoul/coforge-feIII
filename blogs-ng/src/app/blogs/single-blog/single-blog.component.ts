@@ -13,6 +13,7 @@ export class SingleBlogComponent {
 
   @Output('deleteBlog')
   deleteBlogEventEmitter: EventEmitter<number> = new EventEmitter();
+  today = new Date();
 
   blogStyle = {
     'background-color': 'tomato',

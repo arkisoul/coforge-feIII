@@ -1,3 +1,4 @@
+<a routerLink="/blogs/add">Add Blog</a>
 <div class="blogs">
   <h2 [title]="pageTitle" class="title">{{ pageTitle }}</h2>
   <app-single-blog (click)="handleBlogClick()" (deleteBlog)="onDeleteBlog($event)" [blogItem]="blog" *ngFor="let blog of blogs"></app-single-blog>

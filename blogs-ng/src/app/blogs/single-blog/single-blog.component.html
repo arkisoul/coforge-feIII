@@ -10,10 +10,11 @@
     [ngStyle]="blogStyle"
     [ngClass]="{ 'blog--published': blogItem.isPublished, 'blog--draft': !blogItem.isPublished }"
   >
-    <h3 (click)="navigateToDetail()">{{ blogItem.title }}</h3>
+    <h3 (click)="navigateToDetail()">{{ blogItem.title | titlecase }}</h3>
     <p>{{ blogItem.body }}</p>
     <small *ngIf="blogItem.isPublished; else elseBlock">Published</small>
     <ng-template #elseBlock><small>Draft</small></ng-template>
+    <small>{{ today | date:'short' }}</small>
     <div class="blog-action">
       <button (click)="handleBlogDelete($event)">Delete</button>
       <a [routerLink]="['/blogs', blogItem.id]">Detail</a>
