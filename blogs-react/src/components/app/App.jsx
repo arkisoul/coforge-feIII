@@ -21,7 +21,7 @@ export function App() {
       </header>
       <main>
         <Routes>
-          <Route path='/blogs' element={<Blogs />} />
+          <PrivateRoute path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:id' element={<BlogDetail />} />
           <Route path='/' element={<h1>This is Home</h1>} />
         </Routes>
@@ -31,4 +31,9 @@ export function App() {
       </footer>
     </div>
   );
+}
+
+const PrivateRoute = ({ path, element}) => {
+  const isAuthenticate = true;
+  return isAuthenticate ? <Route path={path} element={element} /> : null;
 }
